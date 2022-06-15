@@ -3,17 +3,18 @@ Documentation     Generic keywords file
 
 Library             SeleniumLibrary
 Library             Collections
+Library             RequestsLibrary
 Resource            ../_utilities/settings.robot
 Resource            ../_utilities/web_elements.robot
 
 
 
 *** Variables ***
-${BROWSER}      chrome
-${WEBPAGE}      https://the-internet.herokuapp.com/
+
 
 
 *** Keywords ***
+######### WEB Keywords #########
 open ${pageTitle} page
     [documentation]     Generic Keyword to open a web page
 
@@ -60,3 +61,22 @@ save emails from table
     END
 
     [return]    ${savedEmails}
+
+
+######### API Keywords #########
+email and password are definied as ${email} and ${password}
+        [documentation]     Generic Keyword to generate body with email and password
+        ${body}=    set Variable    {"email": "${email}", "password": "${password}"}
+        set test variable       ${body}     ${body}
+
+
+registration is executed
+    [documentation]     Generic Keyword to generate body with email and password
+
+    ${resp}=    run post request    ${API_HOST}     ${REGISTRATION_ENDPOINT}        ${body}
+    set test variable     ${resp}        ${resp}
+
+
+the correct token is returned: ${token}
+    [documentation]     Generic Keyword to validate login token
+    should be equal    ${resp}[token]         ${token}        Token returned isn't the expected: ${token}

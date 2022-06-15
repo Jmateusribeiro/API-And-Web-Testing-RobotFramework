@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Robot web test examples
 
-Resource        ../../_utilities/generic_keywords.robot
+Resource        ../_utilities/generic_keywords.robot
 Test Teardown  default teardown
 
 
