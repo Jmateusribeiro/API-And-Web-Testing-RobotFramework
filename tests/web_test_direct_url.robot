@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Robot web test examples
+Documentation     Robot web test examples with direct url
 
 Resource        ../_utilities/generic_keywords.robot
 Test Teardown  default teardown
@@ -11,12 +11,10 @@ Test Teardown  default teardown
 
 *** Test Cases ***
 Verify emails from table 'Example 1'
-    open ${pageTitle} page
-    naviagte to ${dataTables} function
+    go direct to ${TABLES_PAGE}
     verify ${emails} from table Example 1
 
 
 Verify emails from table 'Example 2'
-    open ${pageTitle} page
-    naviagte to ${dataTables} function
+    go direct to ${TABLES_PAGE}
     verify ${emails} from table Example 2

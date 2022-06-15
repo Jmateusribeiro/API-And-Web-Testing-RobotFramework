@@ -7,6 +7,7 @@ Library     SeleniumLibrary
 *** Variables ***
 ${BROWSER}                      chrome
 ${WEBPAGE}                      https://the-internet.herokuapp.com/
+${TABLES_PAGE}                   https://the-internet.herokuapp.com/tables
 ${SCREENSHOTS_DIR}              C:\Users\Admin\Desktop\RobotFramework_Project\_screenshots
 ${API_HOST}                     https://reqres.in/
 ${REGISTRATION_ENDPOINT}        api/register

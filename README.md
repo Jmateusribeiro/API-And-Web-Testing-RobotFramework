@@ -5,7 +5,9 @@ Goal: Project to show different ways to develop and execute RobotFramework Tests
 
 ## Web tests:
 
-web_test_verify_emails.robot contains 2 examples of web tests
+2 variations of web tests were developed:
+- Tests that navigate through menus (web_test_navigate_menus.robot)
+- Tests that go directly to the desired page (web_test_direct_url.robot)
 
 The default browser in settings file is chrome (variable Browser)
 
@@ -36,7 +38,7 @@ Inside the bat file there are 2 different ways to run tests:
 
 The split level of pabot can be changed with the option --testlevelsplit
 
-Note: Don't forget to run the bat file inside virtualenv with all requirements installed
+Note: Don't forget to run the bat file inside an environment with all requirements (requirements.txt) installed
     
     
     
@@ -44,9 +46,12 @@ Note: Don't forget to run the bat file inside virtualenv with all requirements i
 
 - The main focus of this project was to show different ways of develop and running tests;
 - BDD test development make tests more readable;
-- To run the same test with different data, data driven approach is the best option
-- BDD with CSV it's the best option to data driven approach with a lot of examples
-- With lots of suites/tests, pabot it's the best option to run tests
+- To run the same test with different data, data driven approach is the best option;
+- BDD with CSV it's the best option to data driven approach with a lot of examples;
+- With lots of suites/tests, pabot it's the best option to run tests;
+- By using direct URL, tests are faster and more reliable (If menu navigation feature broke, 
+just the test that cover that feature will fail)
+- Don't forget to cover the features of menu navigation :);
 
 
 Hope you enjoyed!

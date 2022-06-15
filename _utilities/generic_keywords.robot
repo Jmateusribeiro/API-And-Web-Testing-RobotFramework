@@ -23,6 +23,14 @@ open ${pageTitle} page
     Title Should Be         ${pageTitle}        Page title should be: ${pageTitle}
 
 
+go direct to ${page}
+    [documentation]     Generic Keyword to open a web page
+
+    open browser webpage               ${page}   ${BROWSER}
+    Wait Until Page Contains        ${dataTablesTitle}
+    Title Should Be         ${pageTitle}        Page title should be: ${pageTitle}
+
+
 naviagte to ${functionName} function
     [documentation]     Generic Keyword to naviagte to a function using click function
 
