@@ -35,6 +35,8 @@ Inside the bat file there are 2 different ways to run tests:
 - pabot command (run tests in parallel)
 
 The split level of pabot can be changed with the option --testlevelsplit
+
+Note: Don't forget to run the bat file inside virtualenv with all requirements installed
     
     
     

@@ -2,9 +2,6 @@ set REPORT_TITTLE="Robot Tests"
 set TEST_NAME=tests
 set FILEPATH=%~dp0
 
-cd env\Scripts
-call activate.bat
-
 set BROWSER=edge
 
 set tmptime=%time: =0%
