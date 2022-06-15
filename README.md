@@ -3,7 +3,7 @@
 Goal: Project to show different ways to develop and execute RobotFramework Tests
 
 
-##Web tests:
+## Web tests:
 
 web_test_verify_emails.robot contains 2 examples of web tests
 
@@ -14,7 +14,7 @@ But if one pass the option '--variable BROWSER:{browser}' in robot command, BROW
 PS: Don't forget to have the webdrivers in PATH
 
 
-##API tests:
+## API tests:
     
 3 type os API tests were developed: 
 - Keyword driven tests (api_keyword_driven.robot)
@@ -22,7 +22,7 @@ PS: Don't forget to have the webdrivers in PATH
 - BDD with data driven CSV (api_bdd_with_csv.robot)
 
 
-##Run Tests:
+## Run Tests:
 
 All tests of this project can be runned by executing the bat file 'runTests.bat'
 
@@ -38,7 +38,7 @@ The split level of pabot can be changed with the option --testlevelsplit
     
     
     
-##Final considerations:
+## Final considerations:
 
 - The main focus of this project was to show different ways of develop and running tests;
 - BDD test development make tests more readable;
