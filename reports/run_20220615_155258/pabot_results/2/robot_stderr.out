@@ -1,8 +1,0 @@
-c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-[ WARN ] Multiple tests with name 'Successful Registration' executed in suite 'Tests.Api Keyword Driven'.
-c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-[ WARN ] Multiple tests with name 'Successful Registration' executed in suite 'Tests.Api Keyword Driven'.
-c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
