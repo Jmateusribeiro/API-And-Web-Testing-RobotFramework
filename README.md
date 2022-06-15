@@ -1,4 +1,4 @@
-# RobotFramework_ProjectExample
+# RobotFramework_Project
 
 Goal: Project to show different ways to develop and execute RobotFramework Tests
 
