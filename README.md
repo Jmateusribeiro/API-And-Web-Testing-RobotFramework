@@ -33,11 +33,11 @@ Run Tests:
     
 Final considerations:
 
-    - The main focus of this project was to show different ways of develop and running tests;
-    - BDD test development make tests more readable;
-    - To run the same test with different data, data driven approach is the best option
-    - BDD with CSV it's the best option to data driven approach with a lot of examples
-    - With lots of suites/tests, pabot it's the best option to run tests
+- The main focus of this project was to show different ways of develop and running tests;
+- BDD test development make tests more readable;
+- To run the same test with different data, data driven approach is the best option
+- BDD with CSV it's the best option to data driven approach with a lot of examples
+- With lots of suites/tests, pabot it's the best option to run tests
 
 
 Hope you enjoyed!
