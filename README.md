@@ -7,7 +7,7 @@ Web tests:
 
     web_tests_verify_emails.robot contains 2 examples of web tests
     The default browser in settings file is chrome (variable Browser)
-    But if one pass the option '--variable BROWSER:{browser}' in robot command, variable BROWSER is overwritten
+    But if one pass the option '--variable BROWSER:{browser}' in robot command, BROWSER is overwritten
     PS: Don't forget to have the webdrivers in PATH
 
 
