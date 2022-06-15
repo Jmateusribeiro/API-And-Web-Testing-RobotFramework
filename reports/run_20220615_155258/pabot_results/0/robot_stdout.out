@@ -1,0 +1,18 @@
+==============================================================================
+Tests                                                                         
+==============================================================================
+Tests.Api Bdd With Csv :: Robot API BDD with csv test example                 
+==============================================================================
+Scenario: Successful Registration with eve.holt@reqres.in             | PASS |
+------------------------------------------------------------------------------
+Scenario: Successful Registration with michael.lawson@reqres.in       | PASS |
+------------------------------------------------------------------------------
+Scenario: Successful Registration with lindsay.ferguson@reqres.in     | PASS |
+------------------------------------------------------------------------------
+Tests.Api Bdd With Csv :: Robot API BDD with csv test example         | PASS |
+3 tests, 3 passed, 0 failed
+==============================================================================
+Tests                                                                 | PASS |
+3 tests, 3 passed, 0 failed
+==============================================================================
+Output:  C:\Users\Admin\Desktop\RobotFramework_Project\reports\run_20220615_155258\pabot_results\0\output.xml

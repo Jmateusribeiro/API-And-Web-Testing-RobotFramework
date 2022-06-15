@@ -1,0 +1,1332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Rebot 5.0.1 (Python 3.8.0 on win32)" generated="20220615 15:53:13.422" rpa="false" schemaversion="3">
+<suite id="s1" name="Tests" source="C:\Users\Admin\Desktop\RobotFramework_Project\tests">
+<suite id="s1-s1" name="Api Bdd With Csv" source="C:\Users\Admin\Desktop\RobotFramework_Project\tests\api_bdd_with_csv.robot">
+<test id="s1-s1-t1" name="Scenario: Successful Registration with eve.holt@reqres.in" line="10">
+<kw name="Scenario Outline: Successful Registration">
+<arg>eve.holt@reqres.in</arg>
+<arg>xpto</arg>
+<arg>QpwL5tke4Pnpja7X4</arg>
+<kw name="Given email and password are definied as ${email} and ${password}" library="generic_keywords" sourcename="email and password are definied as ${email} and ${password}">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${body}</var>
+<arg>{"email": "${email}", "password": "${password}"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220615 15:53:00.710" level="INFO">${body} = {"email": "eve.holt@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.710" endtime="20220615 15:53:00.710"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${body}</arg>
+<arg>${body}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:00.712" level="INFO">${body} = {"email": "eve.holt@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.711" endtime="20220615 15:53:00.712"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.709" endtime="20220615 15:53:00.712"/>
+</kw>
+<kw name="When registration is executed" library="generic_keywords">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="run post request" library="settings">
+<var>${resp}</var>
+<arg>${API_HOST}</arg>
+<arg>${REGISTRATION_ENDPOINT}</arg>
+<arg>${body}</arg>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${host}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220615 15:53:00.715" level="INFO">Creating Session using : alias=session, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220615 15:53:00.714" endtime="20220615 15:53:00.715"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>${url}</arg>
+<arg>data=${body}</arg>
+<arg>expected_status=any</arg>
+<arg>headers=${contentType}</arg>
+<arg>verify=${False}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220615 15:53:00.979" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '51'} 
+ body={"email": "eve.holt@reqres.in", "password": "xpto"} 
+ </msg>
+<msg timestamp="20220615 15:53:00.979" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 15 Jun 2022 14:53:02 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"24-4iP0za1geN2he+ohu8F0FhCjLks"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=qyXfqkJOfzNVEaa7cMnkw7ALoaqT0lQPmOHwQilFMpB9c4vpzsPCy%2FaejvQu0CHVr%2BHl4lD5N5ETKPwdn3I%2BjwKG63ui%2Biu25fHNF5lz%2B2lH2iUPy85S7tQQ2w%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '71bc220a196194ee-LIS'} 
+ body={"id":4,"token":"QpwL5tke4Pnpja7X4"} 
+ </msg>
+<msg timestamp="20220615 15:53:00.979" level="INFO">c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220615 15:53:00.980" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220615 15:53:00.716" endtime="20220615 15:53:00.980"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<arg>${resp.reason}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220615 15:53:00.980" endtime="20220615 15:53:00.981"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>resposta: ${resp.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220615 15:53:00.982" level="INFO">resposta: {'id': 4, 'token': 'QpwL5tke4Pnpja7X4'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.981" endtime="20220615 15:53:00.982"/>
+</kw>
+<msg timestamp="20220615 15:53:00.983" level="INFO">${resp} = {'id': 4, 'token': 'QpwL5tke4Pnpja7X4'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.713" endtime="20220615 15:53:00.983"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${resp}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:00.984" level="INFO">${resp} = {'id': 4, 'token': 'QpwL5tke4Pnpja7X4'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.984" endtime="20220615 15:53:00.984"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.713" endtime="20220615 15:53:00.985"/>
+</kw>
+<kw name="Then the correct token is returned: ${token}" library="generic_keywords" sourcename="the correct token is returned: ${token}">
+<doc>Generic Keyword to validate login token</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${resp}[token]</arg>
+<arg>${token}</arg>
+<arg>Token returned isn't the expected: ${token}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220615 15:53:00.985" endtime="20220615 15:53:00.986"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.985" endtime="20220615 15:53:00.986"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.707" endtime="20220615 15:53:00.986"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.705" endtime="20220615 15:53:00.986"/>
+</test>
+<test id="s1-s1-t2" name="Scenario: Successful Registration with michael.lawson@reqres.in" line="10">
+<kw name="Scenario Outline: Successful Registration">
+<arg>michael.lawson@reqres.in</arg>
+<arg>xpto</arg>
+<arg>QpwL5tke4Pnpja7X7</arg>
+<kw name="Given email and password are definied as ${email} and ${password}" library="generic_keywords" sourcename="email and password are definied as ${email} and ${password}">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${body}</var>
+<arg>{"email": "${email}", "password": "${password}"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220615 15:53:00.990" level="INFO">${body} = {"email": "michael.lawson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.990" endtime="20220615 15:53:00.990"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${body}</arg>
+<arg>${body}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:00.991" level="INFO">${body} = {"email": "michael.lawson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.990" endtime="20220615 15:53:00.991"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.989" endtime="20220615 15:53:00.991"/>
+</kw>
+<kw name="When registration is executed" library="generic_keywords">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="run post request" library="settings">
+<var>${resp}</var>
+<arg>${API_HOST}</arg>
+<arg>${REGISTRATION_ENDPOINT}</arg>
+<arg>${body}</arg>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${host}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220615 15:53:00.993" level="INFO">Creating Session using : alias=session, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220615 15:53:00.992" endtime="20220615 15:53:00.993"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>${url}</arg>
+<arg>data=${body}</arg>
+<arg>expected_status=any</arg>
+<arg>headers=${contentType}</arg>
+<arg>verify=${False}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220615 15:53:01.190" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '57'} 
+ body={"email": "michael.lawson@reqres.in", "password": "xpto"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.190" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 15 Jun 2022 14:53:02 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"24-8tTWiYHQANHoQfVrTc/AwmqN43g"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=6%2BtA1y9oB2BdbIieYNOsQKATS4Kr4JF13Oo%2Beqx3c%2Bk8c%2BTbWikpvSvx%2FvdgsWtaVoJs2evKP2V5OF78%2BCOo0WlKoWY0HEyT5qFjL8HajrlPCJ61in1GinCAMw%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '71bc220b9858da7a-LIS'} 
+ body={"id":7,"token":"QpwL5tke4Pnpja7X7"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.190" level="INFO">c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220615 15:53:01.191" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220615 15:53:00.993" endtime="20220615 15:53:01.191"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<arg>${resp.reason}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220615 15:53:01.191" endtime="20220615 15:53:01.192"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>resposta: ${resp.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220615 15:53:01.193" level="INFO">resposta: {'id': 7, 'token': 'QpwL5tke4Pnpja7X7'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.192" endtime="20220615 15:53:01.193"/>
+</kw>
+<msg timestamp="20220615 15:53:01.194" level="INFO">${resp} = {'id': 7, 'token': 'QpwL5tke4Pnpja7X7'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.992" endtime="20220615 15:53:01.194"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${resp}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:01.194" level="INFO">${resp} = {'id': 7, 'token': 'QpwL5tke4Pnpja7X7'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.194" endtime="20220615 15:53:01.194"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.991" endtime="20220615 15:53:01.195"/>
+</kw>
+<kw name="Then the correct token is returned: ${token}" library="generic_keywords" sourcename="the correct token is returned: ${token}">
+<doc>Generic Keyword to validate login token</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${resp}[token]</arg>
+<arg>${token}</arg>
+<arg>Token returned isn't the expected: ${token}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220615 15:53:01.195" endtime="20220615 15:53:01.196"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.195" endtime="20220615 15:53:01.196"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.989" endtime="20220615 15:53:01.196"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.987" endtime="20220615 15:53:01.196"/>
+</test>
+<test id="s1-s1-t3" name="Scenario: Successful Registration with lindsay.ferguson@reqres.in" line="10">
+<kw name="Scenario Outline: Successful Registration">
+<arg>lindsay.ferguson@reqres.in</arg>
+<arg>xpto</arg>
+<arg>QpwL5tke4Pnpja7X8</arg>
+<kw name="Given email and password are definied as ${email} and ${password}" library="generic_keywords" sourcename="email and password are definied as ${email} and ${password}">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${body}</var>
+<arg>{"email": "${email}", "password": "${password}"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220615 15:53:01.200" level="INFO">${body} = {"email": "lindsay.ferguson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:01.199" endtime="20220615 15:53:01.200"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${body}</arg>
+<arg>${body}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:01.200" level="INFO">${body} = {"email": "lindsay.ferguson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:01.200" endtime="20220615 15:53:01.201"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.199" endtime="20220615 15:53:01.201"/>
+</kw>
+<kw name="When registration is executed" library="generic_keywords">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="run post request" library="settings">
+<var>${resp}</var>
+<arg>${API_HOST}</arg>
+<arg>${REGISTRATION_ENDPOINT}</arg>
+<arg>${body}</arg>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${host}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220615 15:53:01.202" level="INFO">Creating Session using : alias=session, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220615 15:53:01.202" endtime="20220615 15:53:01.202"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>${url}</arg>
+<arg>data=${body}</arg>
+<arg>expected_status=any</arg>
+<arg>headers=${contentType}</arg>
+<arg>verify=${False}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220615 15:53:01.391" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '59'} 
+ body={"email": "lindsay.ferguson@reqres.in", "password": "xpto"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.391" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 15 Jun 2022 14:53:02 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"24-oqn+iUKVi0WoYhgeMmqSSB4YMj4"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=Gu49hsBgbqL4MMfHt3CHa26ljOBIYhN%2FFmX9Dv7yUZwERw6Dw4ocdi6btayzRBJSx1aeYJ8tH16ys%2BNwtzRIQ9LsO4hw4bJdSCcr8obeng1QBZ58HSjv2ddoew%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '71bc220cee879506-LIS'} 
+ body={"id":8,"token":"QpwL5tke4Pnpja7X8"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.391" level="INFO">c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220615 15:53:01.392" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220615 15:53:01.203" endtime="20220615 15:53:01.392"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<arg>${resp.reason}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220615 15:53:01.392" endtime="20220615 15:53:01.393"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>resposta: ${resp.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220615 15:53:01.395" level="INFO">resposta: {'id': 8, 'token': 'QpwL5tke4Pnpja7X8'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.394" endtime="20220615 15:53:01.395"/>
+</kw>
+<msg timestamp="20220615 15:53:01.396" level="INFO">${resp} = {'id': 8, 'token': 'QpwL5tke4Pnpja7X8'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.201" endtime="20220615 15:53:01.396"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${resp}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:01.396" level="INFO">${resp} = {'id': 8, 'token': 'QpwL5tke4Pnpja7X8'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.396" endtime="20220615 15:53:01.396"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.201" endtime="20220615 15:53:01.397"/>
+</kw>
+<kw name="Then the correct token is returned: ${token}" library="generic_keywords" sourcename="the correct token is returned: ${token}">
+<doc>Generic Keyword to validate login token</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${resp}[token]</arg>
+<arg>${token}</arg>
+<arg>Token returned isn't the expected: ${token}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220615 15:53:01.397" endtime="20220615 15:53:01.398"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.397" endtime="20220615 15:53:01.398"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.198" endtime="20220615 15:53:01.398"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.197" endtime="20220615 15:53:01.398"/>
+</test>
+<doc>Robot API BDD with csv test example</doc>
+<status status="PASS" starttime="20220615 15:53:00.251" endtime="20220615 15:53:01.399"/>
+</suite>
+<suite id="s1-s2" name="Api Bdd With Table" source="C:\Users\Admin\Desktop\RobotFramework_Project\tests\api_bdd_with_table.robot">
+<test id="s1-s2-t1" name="Feature: Registration" line="8">
+<kw name="Scenario Outline: Successful Registration">
+<arg>eve.holt@reqres.in</arg>
+<arg>xpto</arg>
+<arg>QpwL5tke4Pnpja7X4</arg>
+<kw name="Given email and password are definied as ${email} and ${password}" library="generic_keywords" sourcename="email and password are definied as ${email} and ${password}">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${body}</var>
+<arg>{"email": "${email}", "password": "${password}"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220615 15:53:00.644" level="INFO">${body} = {"email": "eve.holt@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.643" endtime="20220615 15:53:00.644"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${body}</arg>
+<arg>${body}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:00.645" level="INFO">${body} = {"email": "eve.holt@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.644" endtime="20220615 15:53:00.645"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.642" endtime="20220615 15:53:00.645"/>
+</kw>
+<kw name="When registration is executed" library="generic_keywords">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="run post request" library="settings">
+<var>${resp}</var>
+<arg>${API_HOST}</arg>
+<arg>${REGISTRATION_ENDPOINT}</arg>
+<arg>${body}</arg>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${host}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220615 15:53:00.648" level="INFO">Creating Session using : alias=session, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220615 15:53:00.647" endtime="20220615 15:53:00.648"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>${url}</arg>
+<arg>data=${body}</arg>
+<arg>expected_status=any</arg>
+<arg>headers=${contentType}</arg>
+<arg>verify=${False}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220615 15:53:00.970" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '51'} 
+ body={"email": "eve.holt@reqres.in", "password": "xpto"} 
+ </msg>
+<msg timestamp="20220615 15:53:00.970" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 15 Jun 2022 14:53:02 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"24-4iP0za1geN2he+ohu8F0FhCjLks"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=Wn27UbX6kY%2BLicLtKeXym5q9PSzCJTVYa60l2Qke4VId%2BFE18hxDQIW6O1xpTCTUuWIJwUkriwaTz61jYfrAFZqiypRSEMrnljn0Cl4Q4SSmMMDOljru0DuOHw%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '71bc2209c8219504-LIS'} 
+ body={"id":4,"token":"QpwL5tke4Pnpja7X4"} 
+ </msg>
+<msg timestamp="20220615 15:53:00.970" level="INFO">c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220615 15:53:00.970" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220615 15:53:00.649" endtime="20220615 15:53:00.970"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<arg>${resp.reason}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220615 15:53:00.971" endtime="20220615 15:53:00.972"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>resposta: ${resp.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220615 15:53:00.973" level="INFO">resposta: {'id': 4, 'token': 'QpwL5tke4Pnpja7X4'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.972" endtime="20220615 15:53:00.973"/>
+</kw>
+<msg timestamp="20220615 15:53:00.974" level="INFO">${resp} = {'id': 4, 'token': 'QpwL5tke4Pnpja7X4'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.646" endtime="20220615 15:53:00.974"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${resp}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:00.974" level="INFO">${resp} = {'id': 4, 'token': 'QpwL5tke4Pnpja7X4'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.974" endtime="20220615 15:53:00.974"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.645" endtime="20220615 15:53:00.975"/>
+</kw>
+<kw name="Then the correct token is returned: ${token}" library="generic_keywords" sourcename="the correct token is returned: ${token}">
+<doc>Generic Keyword to validate login token</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${resp}[token]</arg>
+<arg>${token}</arg>
+<arg>Token returned isn't the expected: ${token}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220615 15:53:00.975" endtime="20220615 15:53:00.976"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.975" endtime="20220615 15:53:00.976"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.641" endtime="20220615 15:53:00.976"/>
+</kw>
+<kw name="Scenario Outline: Successful Registration">
+<arg>michael.lawson@reqres.in</arg>
+<arg>xpto</arg>
+<arg>QpwL5tke4Pnpja7X7</arg>
+<kw name="Given email and password are definied as ${email} and ${password}" library="generic_keywords" sourcename="email and password are definied as ${email} and ${password}">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${body}</var>
+<arg>{"email": "${email}", "password": "${password}"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220615 15:53:00.978" level="INFO">${body} = {"email": "michael.lawson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.977" endtime="20220615 15:53:00.978"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${body}</arg>
+<arg>${body}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:00.979" level="INFO">${body} = {"email": "michael.lawson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.978" endtime="20220615 15:53:00.979"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.977" endtime="20220615 15:53:00.979"/>
+</kw>
+<kw name="When registration is executed" library="generic_keywords">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="run post request" library="settings">
+<var>${resp}</var>
+<arg>${API_HOST}</arg>
+<arg>${REGISTRATION_ENDPOINT}</arg>
+<arg>${body}</arg>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${host}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220615 15:53:00.981" level="INFO">Creating Session using : alias=session, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220615 15:53:00.981" endtime="20220615 15:53:00.981"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>${url}</arg>
+<arg>data=${body}</arg>
+<arg>expected_status=any</arg>
+<arg>headers=${contentType}</arg>
+<arg>verify=${False}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220615 15:53:01.169" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '57'} 
+ body={"email": "michael.lawson@reqres.in", "password": "xpto"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.169" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 15 Jun 2022 14:53:02 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"24-8tTWiYHQANHoQfVrTc/AwmqN43g"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=sistGjNougWG63c9nX7XX50doq0OiWevXc%2Fw8Hp%2BKpoGe9Zma%2FaOsVHodzc1xvkG%2Bu9auQJmf1UUKkufsY%2BARvrt4iwpD3v6581GUo%2BSxcYYu3Grh6moh4Gd4A%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '71bc220b8ca694e6-LIS'} 
+ body={"id":7,"token":"QpwL5tke4Pnpja7X7"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.169" level="INFO">c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220615 15:53:01.170" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220615 15:53:00.981" endtime="20220615 15:53:01.170"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<arg>${resp.reason}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220615 15:53:01.170" endtime="20220615 15:53:01.171"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>resposta: ${resp.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220615 15:53:01.172" level="INFO">resposta: {'id': 7, 'token': 'QpwL5tke4Pnpja7X7'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.171" endtime="20220615 15:53:01.172"/>
+</kw>
+<msg timestamp="20220615 15:53:01.173" level="INFO">${resp} = {'id': 7, 'token': 'QpwL5tke4Pnpja7X7'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.980" endtime="20220615 15:53:01.173"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${resp}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:01.173" level="INFO">${resp} = {'id': 7, 'token': 'QpwL5tke4Pnpja7X7'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.173" endtime="20220615 15:53:01.173"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.979" endtime="20220615 15:53:01.174"/>
+</kw>
+<kw name="Then the correct token is returned: ${token}" library="generic_keywords" sourcename="the correct token is returned: ${token}">
+<doc>Generic Keyword to validate login token</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${resp}[token]</arg>
+<arg>${token}</arg>
+<arg>Token returned isn't the expected: ${token}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220615 15:53:01.174" endtime="20220615 15:53:01.175"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.174" endtime="20220615 15:53:01.175"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.976" endtime="20220615 15:53:01.175"/>
+</kw>
+<kw name="Scenario Outline: Successful Registration">
+<arg>lindsay.ferguson@reqres.in</arg>
+<arg>xpto</arg>
+<arg>QpwL5tke4Pnpja7X8</arg>
+<kw name="Given email and password are definied as ${email} and ${password}" library="generic_keywords" sourcename="email and password are definied as ${email} and ${password}">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${body}</var>
+<arg>{"email": "${email}", "password": "${password}"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220615 15:53:01.177" level="INFO">${body} = {"email": "lindsay.ferguson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:01.176" endtime="20220615 15:53:01.177"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${body}</arg>
+<arg>${body}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:01.177" level="INFO">${body} = {"email": "lindsay.ferguson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:01.177" endtime="20220615 15:53:01.177"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.176" endtime="20220615 15:53:01.178"/>
+</kw>
+<kw name="When registration is executed" library="generic_keywords">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="run post request" library="settings">
+<var>${resp}</var>
+<arg>${API_HOST}</arg>
+<arg>${REGISTRATION_ENDPOINT}</arg>
+<arg>${body}</arg>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${host}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220615 15:53:01.179" level="INFO">Creating Session using : alias=session, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220615 15:53:01.179" endtime="20220615 15:53:01.179"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>${url}</arg>
+<arg>data=${body}</arg>
+<arg>expected_status=any</arg>
+<arg>headers=${contentType}</arg>
+<arg>verify=${False}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220615 15:53:01.391" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '59'} 
+ body={"email": "lindsay.ferguson@reqres.in", "password": "xpto"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.391" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 15 Jun 2022 14:53:02 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"24-oqn+iUKVi0WoYhgeMmqSSB4YMj4"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=vUdIcG9ZtUoE2J4ESWzPNqBW5EMBw%2FCVLP8dp%2BOvhS8OyC%2Btu7UgInoo0K%2Bl74UMzsk%2FFhBbvF3ht2oaXt099dSlYQZB4KNZFrxqFEKHmCFj7bv6AfVocJxA8Q%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '71bc220cdeb3950c-LIS'} 
+ body={"id":8,"token":"QpwL5tke4Pnpja7X8"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.392" level="INFO">c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220615 15:53:01.392" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220615 15:53:01.179" endtime="20220615 15:53:01.392"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<arg>${resp.reason}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220615 15:53:01.392" endtime="20220615 15:53:01.394"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>resposta: ${resp.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220615 15:53:01.396" level="INFO">resposta: {'id': 8, 'token': 'QpwL5tke4Pnpja7X8'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.394" endtime="20220615 15:53:01.396"/>
+</kw>
+<msg timestamp="20220615 15:53:01.398" level="INFO">${resp} = {'id': 8, 'token': 'QpwL5tke4Pnpja7X8'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.178" endtime="20220615 15:53:01.399"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${resp}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:01.400" level="INFO">${resp} = {'id': 8, 'token': 'QpwL5tke4Pnpja7X8'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.399" endtime="20220615 15:53:01.400"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.178" endtime="20220615 15:53:01.401"/>
+</kw>
+<kw name="Then the correct token is returned: ${token}" library="generic_keywords" sourcename="the correct token is returned: ${token}">
+<doc>Generic Keyword to validate login token</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${resp}[token]</arg>
+<arg>${token}</arg>
+<arg>Token returned isn't the expected: ${token}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220615 15:53:01.402" endtime="20220615 15:53:01.403"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.401" endtime="20220615 15:53:01.404"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.175" endtime="20220615 15:53:01.404"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.639" endtime="20220615 15:53:01.404"/>
+</test>
+<doc>Robot API bdd with example table test example</doc>
+<status status="PASS" starttime="20220615 15:53:00.157" endtime="20220615 15:53:01.406"/>
+</suite>
+<suite id="s1-s3" name="Api Keyword Driven" source="C:\Users\Admin\Desktop\RobotFramework_Project\tests\api_keyword_driven.robot">
+<test id="s1-s3-t1" name="Successful Registration" line="8">
+<kw name="email and password are definied as eve.holt@reqres.in and pistol" library="generic_keywords" sourcename="email and password are definied as ${email} and ${password}">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${body}</var>
+<arg>{"email": "${email}", "password": "${password}"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220615 15:53:00.740" level="INFO">${body} = {"email": "eve.holt@reqres.in", "password": "pistol"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.739" endtime="20220615 15:53:00.740"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${body}</arg>
+<arg>${body}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:00.741" level="INFO">${body} = {"email": "eve.holt@reqres.in", "password": "pistol"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.740" endtime="20220615 15:53:00.741"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.739" endtime="20220615 15:53:00.741"/>
+</kw>
+<kw name="registration is executed" library="generic_keywords">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="run post request" library="settings">
+<var>${resp}</var>
+<arg>${API_HOST}</arg>
+<arg>${REGISTRATION_ENDPOINT}</arg>
+<arg>${body}</arg>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${host}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220615 15:53:00.745" level="INFO">Creating Session using : alias=session, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220615 15:53:00.744" endtime="20220615 15:53:00.745"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>${url}</arg>
+<arg>data=${body}</arg>
+<arg>expected_status=any</arg>
+<arg>headers=${contentType}</arg>
+<arg>verify=${False}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220615 15:53:00.961" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '53'} 
+ body={"email": "eve.holt@reqres.in", "password": "pistol"} 
+ </msg>
+<msg timestamp="20220615 15:53:00.962" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 15 Jun 2022 14:53:02 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"24-4iP0za1geN2he+ohu8F0FhCjLks"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=7pVOfKggYMFij59btU%2F3F3BHGI3ESpz9w8rzXySr3O9wOoV5sYpdU%2BaV%2Fl5iZLiW%2BDlRZ3Yr6hgKRvbX2Znbk%2BTDWuDRxBbKxPtLECDp5KLFOyFtDdRb%2FUokxw%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '71bc220a3aa503ca-LIS'} 
+ body={"id":4,"token":"QpwL5tke4Pnpja7X4"} 
+ </msg>
+<msg timestamp="20220615 15:53:00.962" level="INFO">c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220615 15:53:00.962" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220615 15:53:00.746" endtime="20220615 15:53:00.962"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<arg>${resp.reason}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220615 15:53:00.962" endtime="20220615 15:53:00.963"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>resposta: ${resp.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220615 15:53:00.964" level="INFO">resposta: {'id': 4, 'token': 'QpwL5tke4Pnpja7X4'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.964" endtime="20220615 15:53:00.965"/>
+</kw>
+<msg timestamp="20220615 15:53:00.965" level="INFO">${resp} = {'id': 4, 'token': 'QpwL5tke4Pnpja7X4'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.742" endtime="20220615 15:53:00.965"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${resp}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:00.966" level="INFO">${resp} = {'id': 4, 'token': 'QpwL5tke4Pnpja7X4'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.966" endtime="20220615 15:53:00.966"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.742" endtime="20220615 15:53:00.966"/>
+</kw>
+<kw name="the correct token is returned: QpwL5tke4Pnpja7X4" library="generic_keywords" sourcename="the correct token is returned: ${token}">
+<doc>Generic Keyword to validate login token</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${resp}[token]</arg>
+<arg>${token}</arg>
+<arg>Token returned isn't the expected: ${token}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220615 15:53:00.967" endtime="20220615 15:53:00.967"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.966" endtime="20220615 15:53:00.967"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.737" endtime="20220615 15:53:00.968"/>
+</test>
+<test id="s1-s3-t2" name="Successful Registration" line="14">
+<kw name="email and password are definied as michael.lawson@reqres.in and xpto" library="generic_keywords" sourcename="email and password are definied as ${email} and ${password}">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${body}</var>
+<arg>{"email": "${email}", "password": "${password}"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220615 15:53:00.974" level="INFO">${body} = {"email": "michael.lawson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.973" endtime="20220615 15:53:00.974"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${body}</arg>
+<arg>${body}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:00.974" level="INFO">${body} = {"email": "michael.lawson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:00.974" endtime="20220615 15:53:00.975"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.973" endtime="20220615 15:53:00.975"/>
+</kw>
+<kw name="registration is executed" library="generic_keywords">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="run post request" library="settings">
+<var>${resp}</var>
+<arg>${API_HOST}</arg>
+<arg>${REGISTRATION_ENDPOINT}</arg>
+<arg>${body}</arg>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${host}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220615 15:53:00.976" level="INFO">Creating Session using : alias=session, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220615 15:53:00.976" endtime="20220615 15:53:00.977"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>${url}</arg>
+<arg>data=${body}</arg>
+<arg>expected_status=any</arg>
+<arg>headers=${contentType}</arg>
+<arg>verify=${False}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220615 15:53:01.160" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '57'} 
+ body={"email": "michael.lawson@reqres.in", "password": "xpto"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.160" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 15 Jun 2022 14:53:02 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"24-8tTWiYHQANHoQfVrTc/AwmqN43g"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=RLLW00YdpzYaiOVLp3Hi2OlcQfxDmh5Xdk34CGGRu3FPmDflcuxk9auzVtCoWcYyYQQtTn4HDmvmys285fSfPwifjHHtUPmqyAhYJ9C2%2F23Jrfm9de06z1QdXw%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '71bc220b7e3c94ef-LIS'} 
+ body={"id":7,"token":"QpwL5tke4Pnpja7X7"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.161" level="INFO">c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220615 15:53:01.161" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220615 15:53:00.977" endtime="20220615 15:53:01.161"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<arg>${resp.reason}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220615 15:53:01.161" endtime="20220615 15:53:01.162"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>resposta: ${resp.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220615 15:53:01.163" level="INFO">resposta: {'id': 7, 'token': 'QpwL5tke4Pnpja7X7'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.162" endtime="20220615 15:53:01.163"/>
+</kw>
+<msg timestamp="20220615 15:53:01.164" level="INFO">${resp} = {'id': 7, 'token': 'QpwL5tke4Pnpja7X7'}</msg>
+<status status="PASS" starttime="20220615 15:53:00.975" endtime="20220615 15:53:01.164"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${resp}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:01.164" level="INFO">${resp} = {'id': 7, 'token': 'QpwL5tke4Pnpja7X7'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.164" endtime="20220615 15:53:01.164"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.975" endtime="20220615 15:53:01.165"/>
+</kw>
+<kw name="the correct token is returned: QpwL5tke4Pnpja7X7" library="generic_keywords" sourcename="the correct token is returned: ${token}">
+<doc>Generic Keyword to validate login token</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${resp}[token]</arg>
+<arg>${token}</arg>
+<arg>Token returned isn't the expected: ${token}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220615 15:53:01.165" endtime="20220615 15:53:01.166"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.165" endtime="20220615 15:53:01.166"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.968" endtime="20220615 15:53:01.166"/>
+</test>
+<test id="s1-s3-t3" name="Successful Registration" line="20">
+<kw name="email and password are definied as lindsay.ferguson@reqres.in and xpto" library="generic_keywords" sourcename="email and password are definied as ${email} and ${password}">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${body}</var>
+<arg>{"email": "${email}", "password": "${password}"}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220615 15:53:01.172" level="INFO">${body} = {"email": "lindsay.ferguson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:01.172" endtime="20220615 15:53:01.172"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${body}</arg>
+<arg>${body}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:01.173" level="INFO">${body} = {"email": "lindsay.ferguson@reqres.in", "password": "xpto"}</msg>
+<status status="PASS" starttime="20220615 15:53:01.172" endtime="20220615 15:53:01.173"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.171" endtime="20220615 15:53:01.173"/>
+</kw>
+<kw name="registration is executed" library="generic_keywords">
+<doc>Generic Keyword to generate body with email and password</doc>
+<kw name="run post request" library="settings">
+<var>${resp}</var>
+<arg>${API_HOST}</arg>
+<arg>${REGISTRATION_ENDPOINT}</arg>
+<arg>${body}</arg>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${host}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220615 15:53:01.174" level="INFO">Creating Session using : alias=session, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220615 15:53:01.174" endtime="20220615 15:53:01.174"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${resp}</var>
+<arg>session</arg>
+<arg>${url}</arg>
+<arg>data=${body}</arg>
+<arg>expected_status=any</arg>
+<arg>headers=${contentType}</arg>
+<arg>verify=${False}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220615 15:53:01.362" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.28.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '59'} 
+ body={"email": "lindsay.ferguson@reqres.in", "password": "xpto"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.362" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 15 Jun 2022 14:53:02 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"24-oqn+iUKVi0WoYhgeMmqSSB4YMj4"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=1VdDPDCnHDEkUY12PN0f06IlPorFh2B1tIxaGCtuJMI34jY%2BhmSf5RrOcCbFDOOgf%2B%2F9%2B9I0KPbMyLghKutI3ZGqMLOpnpL2pEcatOdSqHrWAtCZl4540KdeJg%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '71bc220cb95e03e6-LIS'} 
+ body={"id":8,"token":"QpwL5tke4Pnpja7X8"} 
+ </msg>
+<msg timestamp="20220615 15:53:01.363" level="INFO">c:\users\admin\desktop\robotframework_project\env\lib\site-packages\urllib3\connectionpool.py:1043: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220615 15:53:01.363" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220615 15:53:01.175" endtime="20220615 15:53:01.363"/>
+</kw>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>200</arg>
+<arg>${resp}</arg>
+<arg>${resp.reason}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20220615 15:53:01.363" endtime="20220615 15:53:01.364"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>resposta: ${resp.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220615 15:53:01.365" level="INFO">resposta: {'id': 8, 'token': 'QpwL5tke4Pnpja7X8'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.364" endtime="20220615 15:53:01.365"/>
+</kw>
+<msg timestamp="20220615 15:53:01.366" level="INFO">${resp} = {'id': 8, 'token': 'QpwL5tke4Pnpja7X8'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.173" endtime="20220615 15:53:01.366"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${resp}</arg>
+<arg>${resp}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220615 15:53:01.367" level="INFO">${resp} = {'id': 8, 'token': 'QpwL5tke4Pnpja7X8'}</msg>
+<status status="PASS" starttime="20220615 15:53:01.366" endtime="20220615 15:53:01.367"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.173" endtime="20220615 15:53:01.367"/>
+</kw>
+<kw name="the correct token is returned: QpwL5tke4Pnpja7X8" library="generic_keywords" sourcename="the correct token is returned: ${token}">
+<doc>Generic Keyword to validate login token</doc>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${resp}[token]</arg>
+<arg>${token}</arg>
+<arg>Token returned isn't the expected: ${token}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220615 15:53:01.368" endtime="20220615 15:53:01.368"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.367" endtime="20220615 15:53:01.369"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:01.170" endtime="20220615 15:53:01.369"/>
+</test>
+<doc>Robot API keyword driven test example</doc>
+<status status="PASS" starttime="20220615 15:53:00.253" endtime="20220615 15:53:01.369"/>
+</suite>
+<suite id="s1-s4" name="Web Tests Verify Emails" source="C:\Users\Admin\Desktop\RobotFramework_Project\tests\web_tests_verify_emails.robot">
+<test id="s1-s4-t1" name="Verify emails from table 'Example 1'" line="13">
+<kw name="open ${pageTitle} page" library="generic_keywords" sourcename="open ${pageTitle} page">
+<doc>Generic Keyword to open a web page</doc>
+<kw name="open browser webpage" library="settings">
+<arg>${WEBPAGE}</arg>
+<arg>${BROWSER}</arg>
+<doc>keyword to open a page in a specific browser</doc>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${page}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220615 15:53:00.724" level="INFO">Opening browser 'edge' to base url 'https://the-internet.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20220615 15:53:00.723" endtime="20220615 15:53:03.962"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220615 15:53:03.962" endtime="20220615 15:53:04.085"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.722" endtime="20220615 15:53:04.085"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${pageIntroText}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220615 15:53:04.085" endtime="20220615 15:53:04.102"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${pageTitle}</arg>
+<arg>Page title should be: ${pageTitle}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220615 15:53:04.109" level="INFO">Page title is 'The Internet'.</msg>
+<status status="PASS" starttime="20220615 15:53:04.102" endtime="20220615 15:53:04.109"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.721" endtime="20220615 15:53:04.110"/>
+</kw>
+<kw name="naviagte to ${dataTables} function" library="generic_keywords" sourcename="naviagte to ${functionName} function">
+<doc>Generic Keyword to naviagte to a function using click function</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${element}</var>
+<arg>//a[text()='${functionName}']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220615 15:53:04.111" level="INFO">${element} = //a[text()='Sortable Data Tables']</msg>
+<status status="PASS" starttime="20220615 15:53:04.111" endtime="20220615 15:53:04.111"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${element}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220615 15:53:04.111" endtime="20220615 15:53:04.157"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220615 15:53:04.158" level="INFO">Clicking element '//a[text()='Sortable Data Tables']'.</msg>
+<status status="PASS" starttime="20220615 15:53:04.158" endtime="20220615 15:53:04.519"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:04.110" endtime="20220615 15:53:04.520"/>
+</kw>
+<kw name="verify ${emails} from table Example 1" library="generic_keywords" sourcename="verify ${expectedEmails} from table ${table}">
+<doc>Generic Keyword to save and verify emails on a table</doc>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${table}</arg>
+<arg>2</arg>
+<arg>Available tables: 'Example 1'; 'Example 2'</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220615 15:53:04.521" endtime="20220615 15:53:04.536"/>
+</kw>
+<kw name="save emails from table" library="generic_keywords">
+<var>${savedEmails}</var>
+<arg>${table}</arg>
+<doc>Generic Keyword to save emails from a table</doc>
+<kw name="Create List" library="BuiltIn">
+<var>@{savedEmails}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220615 15:53:04.537" level="INFO">@{savedEmails} = [ ]</msg>
+<status status="PASS" starttime="20220615 15:53:04.537" endtime="20220615 15:53:04.537"/>
+</kw>
+<if>
+<branch type="IF" condition="'${table}' == 'Example 1'">
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${elements}</var>
+<arg>${emailTable1}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20220615 15:53:04.551" level="INFO">${elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="1e2c10eaa3da49fd44170573f8ea1994", element="e93b19ed-fed3-4976-9fb3-34b079c3f395")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20220615 15:53:04.537" endtime="20220615 15:53:04.551"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:04.537" endtime="20220615 15:53:04.552"/>
+</branch>
+<branch type="ELSE IF" condition="'${table}' == 'Example 2'">
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${elements}</var>
+<arg>${emailTable2}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="NOT RUN" starttime="20220615 15:53:04.552" endtime="20220615 15:53:04.552"/>
+</kw>
+<status status="NOT RUN" starttime="20220615 15:53:04.552" endtime="20220615 15:53:04.552"/>
+</branch>
+<status status="PASS" starttime="20220615 15:53:04.537" endtime="20220615 15:53:04.552"/>
+</if>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{elements}</value>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1e2c10eaa3da49fd44170573f8ea1994", element="e93b19ed-fed3-4976-9fb3-34b079c3f395")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${value}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220615 15:53:04.568" level="INFO">${value} = jsmith@gmail.com</msg>
+<status status="PASS" starttime="20220615 15:53:04.553" endtime="20220615 15:53:04.568"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${savedEmails}</arg>
+<arg>${value}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220615 15:53:04.569" endtime="20220615 15:53:04.569"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:04.553" endtime="20220615 15:53:04.569"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1e2c10eaa3da49fd44170573f8ea1994", element="ed42b902-f2a0-4eeb-9a9d-64a73075a655")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${value}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220615 15:53:04.585" level="INFO">${value} = fbach@yahoo.com</msg>
+<status status="PASS" starttime="20220615 15:53:04.570" endtime="20220615 15:53:04.585"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${savedEmails}</arg>
+<arg>${value}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220615 15:53:04.585" endtime="20220615 15:53:04.585"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:04.569" endtime="20220615 15:53:04.586"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1e2c10eaa3da49fd44170573f8ea1994", element="19b1a726-f4f1-4b25-9207-27260ba0489e")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${value}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220615 15:53:04.602" level="INFO">${value} = jdoe@hotmail.com</msg>
+<status status="PASS" starttime="20220615 15:53:04.586" endtime="20220615 15:53:04.602"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${savedEmails}</arg>
+<arg>${value}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220615 15:53:04.602" endtime="20220615 15:53:04.603"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:04.586" endtime="20220615 15:53:04.603"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="1e2c10eaa3da49fd44170573f8ea1994", element="10665487-a1c3-429e-919f-807941ffc7e3")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${value}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220615 15:53:04.618" level="INFO">${value} = tconway@earthlink.net</msg>
+<status status="PASS" starttime="20220615 15:53:04.603" endtime="20220615 15:53:04.618"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${savedEmails}</arg>
+<arg>${value}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220615 15:53:04.619" endtime="20220615 15:53:04.619"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:04.603" endtime="20220615 15:53:04.619"/>
+</iter>
+<status status="PASS" starttime="20220615 15:53:04.552" endtime="20220615 15:53:04.619"/>
+</for>
+<msg timestamp="20220615 15:53:04.620" level="INFO">${savedEmails} = ['jsmith@gmail.com', 'fbach@yahoo.com', 'jdoe@hotmail.com', 'tconway@earthlink.net']</msg>
+<status status="PASS" starttime="20220615 15:53:04.536" endtime="20220615 15:53:04.620"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Lista de emails: ${savedEmails}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220615 15:53:04.620" level="INFO">Lista de emails: ['jsmith@gmail.com', 'fbach@yahoo.com', 'jdoe@hotmail.com', 'tconway@earthlink.net']</msg>
+<status status="PASS" starttime="20220615 15:53:04.620" endtime="20220615 15:53:04.620"/>
+</kw>
+<kw name="Lists Should Be Equal" library="Collections">
+<arg>${savedEmails}</arg>
+<arg>${expectedEmails}</arg>
+<arg>A lista de emails incorreta; lista de emails esperada: @{expectedEmails}</arg>
+<arg>ignore_order=True</arg>
+<doc>Fails if given lists are unequal.</doc>
+<status status="PASS" starttime="20220615 15:53:04.621" endtime="20220615 15:53:04.621"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220615 15:53:04.783" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="3-selenium-screenshot-1.png"&gt;&lt;img src="3-selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220615 15:53:04.621" endtime="20220615 15:53:04.784"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:04.520" endtime="20220615 15:53:04.784"/>
+</kw>
+<kw name="default teardown" library="settings" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220615 15:53:04.785" endtime="20220615 15:53:06.958"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:04.784" endtime="20220615 15:53:06.958"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:00.719" endtime="20220615 15:53:06.958"/>
+</test>
+<test id="s1-s4-t2" name="Verify emails from table 'Example 2'" line="19">
+<kw name="open ${pageTitle} page" library="generic_keywords" sourcename="open ${pageTitle} page">
+<doc>Generic Keyword to open a web page</doc>
+<kw name="open browser webpage" library="settings">
+<arg>${WEBPAGE}</arg>
+<arg>${BROWSER}</arg>
+<doc>keyword to open a page in a specific browser</doc>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${page}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220615 15:53:06.964" level="INFO">Opening browser 'edge' to base url 'https://the-internet.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20220615 15:53:06.964" endtime="20220615 15:53:10.069"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220615 15:53:10.069" endtime="20220615 15:53:10.193"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:06.964" endtime="20220615 15:53:10.193"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${pageIntroText}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220615 15:53:10.193" endtime="20220615 15:53:10.209"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>${pageTitle}</arg>
+<arg>Page title should be: ${pageTitle}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220615 15:53:10.216" level="INFO">Page title is 'The Internet'.</msg>
+<status status="PASS" starttime="20220615 15:53:10.210" endtime="20220615 15:53:10.216"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:06.963" endtime="20220615 15:53:10.217"/>
+</kw>
+<kw name="naviagte to ${dataTables} function" library="generic_keywords" sourcename="naviagte to ${functionName} function">
+<doc>Generic Keyword to naviagte to a function using click function</doc>
+<kw name="Set Variable" library="BuiltIn">
+<var>${element}</var>
+<arg>//a[text()='${functionName}']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220615 15:53:10.218" level="INFO">${element} = //a[text()='Sortable Data Tables']</msg>
+<status status="PASS" starttime="20220615 15:53:10.218" endtime="20220615 15:53:10.218"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${element}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220615 15:53:10.218" endtime="20220615 15:53:10.265"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220615 15:53:10.266" level="INFO">Clicking element '//a[text()='Sortable Data Tables']'.</msg>
+<status status="PASS" starttime="20220615 15:53:10.265" endtime="20220615 15:53:10.631"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:10.217" endtime="20220615 15:53:10.632"/>
+</kw>
+<kw name="verify ${emails} from table Example 2" library="generic_keywords" sourcename="verify ${expectedEmails} from table ${table}">
+<doc>Generic Keyword to save and verify emails on a table</doc>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${table}</arg>
+<arg>2</arg>
+<arg>Available tables: 'Example 1'; 'Example 2'</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220615 15:53:10.632" endtime="20220615 15:53:10.649"/>
+</kw>
+<kw name="save emails from table" library="generic_keywords">
+<var>${savedEmails}</var>
+<arg>${table}</arg>
+<doc>Generic Keyword to save emails from a table</doc>
+<kw name="Create List" library="BuiltIn">
+<var>@{savedEmails}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20220615 15:53:10.650" level="INFO">@{savedEmails} = [ ]</msg>
+<status status="PASS" starttime="20220615 15:53:10.650" endtime="20220615 15:53:10.650"/>
+</kw>
+<if>
+<branch type="IF" condition="'${table}' == 'Example 1'">
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${elements}</var>
+<arg>${emailTable1}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="NOT RUN" starttime="20220615 15:53:10.651" endtime="20220615 15:53:10.651"/>
+</kw>
+<status status="NOT RUN" starttime="20220615 15:53:10.650" endtime="20220615 15:53:10.651"/>
+</branch>
+<branch type="ELSE IF" condition="'${table}' == 'Example 2'">
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>${elements}</var>
+<arg>${emailTable2}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20220615 15:53:10.665" level="INFO">${elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="2f4ee512dbcfa9e69d867792ccac7c27", element="33ac11a7-2a00-449c-ba3d-5a472b25eab8")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20220615 15:53:10.651" endtime="20220615 15:53:10.666"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:10.651" endtime="20220615 15:53:10.666"/>
+</branch>
+<status status="PASS" starttime="20220615 15:53:10.650" endtime="20220615 15:53:10.666"/>
+</if>
+<for flavor="IN">
+<var>${element}</var>
+<value>@{elements}</value>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="2f4ee512dbcfa9e69d867792ccac7c27", element="33ac11a7-2a00-449c-ba3d-5a472b25eab8")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${value}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220615 15:53:10.682" level="INFO">${value} = jsmith@gmail.com</msg>
+<status status="PASS" starttime="20220615 15:53:10.667" endtime="20220615 15:53:10.683"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${savedEmails}</arg>
+<arg>${value}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220615 15:53:10.683" endtime="20220615 15:53:10.683"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:10.666" endtime="20220615 15:53:10.683"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="2f4ee512dbcfa9e69d867792ccac7c27", element="3e953996-7163-42be-b3b2-f690f1a38f4d")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${value}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220615 15:53:10.699" level="INFO">${value} = fbach@yahoo.com</msg>
+<status status="PASS" starttime="20220615 15:53:10.684" endtime="20220615 15:53:10.699"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${savedEmails}</arg>
+<arg>${value}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220615 15:53:10.699" endtime="20220615 15:53:10.699"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:10.683" endtime="20220615 15:53:10.700"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="2f4ee512dbcfa9e69d867792ccac7c27", element="953159f9-61cd-4100-ae55-6b93e21ee745")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${value}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220615 15:53:10.715" level="INFO">${value} = jdoe@hotmail.com</msg>
+<status status="PASS" starttime="20220615 15:53:10.700" endtime="20220615 15:53:10.715"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${savedEmails}</arg>
+<arg>${value}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220615 15:53:10.716" endtime="20220615 15:53:10.716"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:10.700" endtime="20220615 15:53:10.716"/>
+</iter>
+<iter>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="2f4ee512dbcfa9e69d867792ccac7c27", element="05121c56-14e0-47a4-a966-726219c11a75")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${value}</var>
+<arg>${element}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220615 15:53:10.732" level="INFO">${value} = tconway@earthlink.net</msg>
+<status status="PASS" starttime="20220615 15:53:10.717" endtime="20220615 15:53:10.732"/>
+</kw>
+<kw name="Append To List" library="Collections">
+<arg>${savedEmails}</arg>
+<arg>${value}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20220615 15:53:10.732" endtime="20220615 15:53:10.732"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:10.716" endtime="20220615 15:53:10.733"/>
+</iter>
+<status status="PASS" starttime="20220615 15:53:10.666" endtime="20220615 15:53:10.733"/>
+</for>
+<msg timestamp="20220615 15:53:10.733" level="INFO">${savedEmails} = ['jsmith@gmail.com', 'fbach@yahoo.com', 'jdoe@hotmail.com', 'tconway@earthlink.net']</msg>
+<status status="PASS" starttime="20220615 15:53:10.649" endtime="20220615 15:53:10.733"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Lista de emails: ${savedEmails}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220615 15:53:10.733" level="INFO">Lista de emails: ['jsmith@gmail.com', 'fbach@yahoo.com', 'jdoe@hotmail.com', 'tconway@earthlink.net']</msg>
+<status status="PASS" starttime="20220615 15:53:10.733" endtime="20220615 15:53:10.734"/>
+</kw>
+<kw name="Lists Should Be Equal" library="Collections">
+<arg>${savedEmails}</arg>
+<arg>${expectedEmails}</arg>
+<arg>A lista de emails incorreta; lista de emails esperada: @{expectedEmails}</arg>
+<arg>ignore_order=True</arg>
+<doc>Fails if given lists are unequal.</doc>
+<status status="PASS" starttime="20220615 15:53:10.734" endtime="20220615 15:53:10.734"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220615 15:53:10.909" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="3-selenium-screenshot-2.png"&gt;&lt;img src="3-selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220615 15:53:10.734" endtime="20220615 15:53:10.910"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:10.632" endtime="20220615 15:53:10.910"/>
+</kw>
+<kw name="default teardown" library="settings" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220615 15:53:10.910" endtime="20220615 15:53:13.061"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:10.910" endtime="20220615 15:53:13.062"/>
+</kw>
+<status status="PASS" starttime="20220615 15:53:06.959" endtime="20220615 15:53:13.062"/>
+</test>
+<doc>Robot web test examples</doc>
+<status status="PASS" starttime="20220615 15:53:00.319" endtime="20220615 15:53:13.063"/>
+</suite>
+<doc>[https://pabot.org/?ref=log|Pabot] result from 4 executions.</doc>
+<status status="PASS" starttime="20220615 15:53:00.114" endtime="20220615 15:53:13.065"/>
+</suite>
+<statistics>
+<total>
+<stat pass="9" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="9" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s1" name="Api Bdd With Csv">Tests.Api Bdd With Csv</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2" name="Api Bdd With Table">Tests.Api Bdd With Table</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s3" name="Api Keyword Driven">Tests.Api Keyword Driven</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s4" name="Web Tests Verify Emails">Tests.Web Tests Verify Emails</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20220615 15:53:00.968" level="WARN">Multiple tests with name 'Successful Registration' executed in suite 'Tests.Api Keyword Driven'.</msg>
+<msg timestamp="20220615 15:53:01.167" level="WARN">Multiple tests with name 'Successful Registration' executed in suite 'Tests.Api Keyword Driven'.</msg>
+</errors>
+</robot>

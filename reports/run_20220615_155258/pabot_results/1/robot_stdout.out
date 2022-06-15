@@ -1,0 +1,14 @@
+==============================================================================
+Tests                                                                         
+==============================================================================
+Tests.Api Bdd With Table :: Robot API bdd with example table test example     
+==============================================================================
+Feature: Registration                                                 | PASS |
+------------------------------------------------------------------------------
+Tests.Api Bdd With Table :: Robot API bdd with example table test ... | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+Tests                                                                 | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+Output:  C:\Users\Admin\Desktop\RobotFramework_Project\reports\run_20220615_155258\pabot_results\1\output.xml
