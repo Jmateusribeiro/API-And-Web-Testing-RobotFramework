@@ -51,7 +51,7 @@ Note: Don't forget to run the bat file inside an environment with all requiremen
 - With lots of suites/tests, pabot it's the best option to run tests;
 - By using direct URL, tests are faster and more reliable (If menu navigation feature broke, 
 just the test that cover that feature will fail)
-- Don't forget to cover the features of menu navigation :);
+- Don't forget to cover the features of menu navigation :)
 
 
 Hope you enjoyed!
