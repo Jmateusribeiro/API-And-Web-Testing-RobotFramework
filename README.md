@@ -9,7 +9,7 @@ Goal: Project to show different ways to develop and execute RobotFramework Tests
 - Tests that navigate through menus (web_test_navigate_menus.robot)
 - Tests that go directly to the desired page (web_test_direct_url.robot)
 
-The default browser in settings file is chrome (variable Browser)
+The default browser, declared in settings file, is chrome (variable Browser)
 
 But if one pass the option '--variable BROWSER:{browser}' in robot command, BROWSER is overwritten
 
