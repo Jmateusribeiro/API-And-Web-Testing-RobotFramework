@@ -1,7 +1,8 @@
 *** Settings ***
 Documentation     Robot web test examples with menu navegation
 
-Resource        ../_utilities/generic_keywords.robot
+Resource        ../pages/data_tables_page.robot
+Resource        ../pages/the_internet_homepage.robot
 Test Teardown  default teardown
 
 
@@ -11,12 +12,12 @@ Test Teardown  default teardown
 
 *** Test Cases ***
 Verify emails from table 'Example 1'
-    open ${pageTitle} page
-    naviagte to ${dataTablesFunction} function
+    open the internet homepage
+    naviagte to data tables page
     verify ${emails} from table Example 1
 
 
 Verify emails from table 'Example 2'
-    open ${pageTitle} page
-    naviagte to ${dataTablesFunction} function
+    open the internet homepage
+    naviagte to data tables page
     verify ${emails} from table Example 2

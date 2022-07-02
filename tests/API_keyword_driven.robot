@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Robot API keyword driven test example
 
-Resource        ../_utilities/generic_keywords.robot
+Resource        ../APIs/regres_registration_API.robot
 
 
 *** Test Cases ***
