@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation   Robot API bdd with example table test example
 
-Resource        ../APIs/regres_registration_API.robot
+Resource        ../services/regres_registration_API.robot
 
 
 *** Test Cases ***

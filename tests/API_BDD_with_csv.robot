@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation   Robot API BDD with csv test example
 
-Resource        ../APIs/regres_registration_API.robot
+Resource        ../services/regres_registration_API.robot
 
 Library            DataDriver      file=data_files\\users_data.csv    dialect=unix
 
