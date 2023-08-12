@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Robot API keyword driven test example
 
-Resource        ../services/regres_registration_API.robot
+Resource        resources/services/regres_registration_API.resource
 
 
 *** Test Cases ***
@@ -13,7 +13,7 @@ Successful Registration
 
 Successful Registration
     email and password are definied as michael.lawson@reqres.in and xpto
-    registration is executed
+    Registration Is Executed
     the correct token is returned: QpwL5tke4Pnpja7X7
 
 

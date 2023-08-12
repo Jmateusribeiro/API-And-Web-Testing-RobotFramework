@@ -1,0 +1,9 @@
+datasources:e505d27f081f434696e369a074f969e9ac4bde38
+commandlineoptions:f4848c4bbfbcc1f0574bafb2955b658d1a64f103
+suitesfrom:no-suites-from-option
+file:df6dcae0619af6517f2b6c516c93ac7c813b3ab6
+--suite Tests.API BDD with csv
+--suite Tests.API BDD with table
+--suite Tests.API keyword driven
+--suite Tests.Web Test Direct Url
+--suite Tests.Web Test Navigate Menus

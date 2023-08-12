@@ -3,11 +3,11 @@ Documentation     base page
 
 Library             SeleniumLibrary
 Library             Collections
-Resource            ../config/config.robot
+Resource            resources/config/config.resource
 
 
 *** Keywords ***
-open browser webpage
+Open Browser Webpage
     [documentation]  keyword to open a page in a specific browser
     [arguments]     ${page}     ${browser}
 
@@ -15,5 +15,5 @@ open browser webpage
     Maximize Browser Window
 
 
-default teardown
+Default Teardown
     Close All Browsers

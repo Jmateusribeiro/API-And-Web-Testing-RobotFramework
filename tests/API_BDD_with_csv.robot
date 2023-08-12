@@ -1,13 +1,13 @@
 *** Settings ***
 Documentation   Robot API BDD with csv test example
 
-Resource        ../services/regres_registration_API.robot
+Resource        resources/services/regres_registration_API.resource
 
 Library            DataDriver      file=data_files\\users_data.csv    dialect=unix
 
 
 *** Test Cases ***
-Scenario: Successful Registration with ${email}
+Scenario: Successful Registration With ${email}
     [Template]      Scenario Outline: Successful Registration
 
 
