@@ -1,19 +1,18 @@
 *** Settings ***
-Documentation     base page
+Documentation     Base page
 
-Library             SeleniumLibrary
 Library             Collections
+Library             SeleniumLibrary
 Resource            resources/config/config.resource
 
 
 *** Keywords ***
 Open Browser Webpage
-    [documentation]  keyword to open a page in a specific browser
-    [arguments]     ${page}     ${browser}
+    [Documentation]  keyword to open a page in a specific browser
+    [Arguments]     ${page}     ${browser}
 
     Open Browser    ${page}    ${browser}
     Maximize Browser Window
-
 
 Default Teardown
     Close All Browsers

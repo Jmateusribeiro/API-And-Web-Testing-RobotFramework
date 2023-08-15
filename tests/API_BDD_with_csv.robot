@@ -4,6 +4,7 @@ Documentation   Robot API BDD with csv test example
 Resource        resources/services/regres_registration_API.resource
 
 Library            DataDriver      file=data_files\\users_data.csv    dialect=unix
+Suite Setup    Load Environment Variables
 
 
 *** Test Cases ***
@@ -13,7 +14,7 @@ Scenario: Successful Registration With ${email}
 
 *** Keywords ***
 Scenario Outline: Successful Registration
-    [Arguments]     ${email}     ${password}   ${token}
+    [Arguments]     ${email}     ${password}
     Given email and password are definied as ${email} and ${password}
     When registration is executed
-    Then the correct token is returned: ${token}
+    Then the correct token is returned

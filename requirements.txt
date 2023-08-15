@@ -3,3 +3,4 @@ robotframework-datadriver
 robotframework-requests
 robotframework-seleniumlibrary
 robotframework-pabot
+python-dotenv

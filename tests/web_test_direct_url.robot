@@ -14,7 +14,6 @@ Verify Emails From Table 'Example 1'
     Go Direct To Data Tables Page
     Verify ${emails} From Table Example 1
 
-
 Verify Emails From Table 'Example 2'
     Go Direct To Data Tables Page
     Verify ${emails} From Table Example 2

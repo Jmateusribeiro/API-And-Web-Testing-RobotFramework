@@ -13,4 +13,4 @@ Run Post Request
     ${resp}=  POST On Session  session  ${url}  data=${body}      expected_status=any     headers=${contentType}      verify=${False}
     Status Should Be  200  ${resp}      ${resp.reason}
     Log     resposta: ${resp.json()}
-    [Return]    ${resp.json()}
+    RETURN    ${resp.json()}

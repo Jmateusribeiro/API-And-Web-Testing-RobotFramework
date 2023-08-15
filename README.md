@@ -53,6 +53,9 @@ Note: Don't forget to run the bat file inside an environment with all requiremen
 just the test that cover that feature will fail)
 - Don't forget to cover the features of menu navigation :)
 
+    The .env file is committed because this project is only to demonstration purposes.
+    In real projects the .env file, containing critical info, must be add to .gitignore
+
 
 Hope you enjoyed!
 
