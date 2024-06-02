@@ -1,4 +1,4 @@
-# RobotFramework_Project
+# API-And-Web-Testing-RobotFramework
 
 [![Robocop](https://github.com/Jmateusribeiro/RobotFramework_Project/actions/workflows/robocop.yml/badge.svg)](https://github.com/Jmateusribeiro/RobotFramework_Project/actions/workflows/robocop.yml)
 
