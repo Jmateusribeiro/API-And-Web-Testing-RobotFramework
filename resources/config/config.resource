@@ -19,7 +19,7 @@ ${REGISTRATION_ENDPOINT}        api/register
 *** Keywords ***
 Load Environment Variables
     [Documentation]    Load environment variables from a .env file
-    File Should Exist   ${PROJECT_DIR}/credentials.env    
+    File Should Exist   ${PROJECT_DIR}/credentials.env
     ...    msg=The file 'credentials.env' was not found in the root dir of the project
 
     Load Dotenv    ${PROJECT_DIR}/credentials.env
