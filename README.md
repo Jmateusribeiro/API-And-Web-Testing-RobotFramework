@@ -1,5 +1,7 @@
 # RobotFramework_Project
 
+[![Robocop](https://github.com/Jmateusribeiro/RobotFramework_Project/actions/workflows/robocop.yml/badge.svg)](https://github.com/Jmateusribeiro/RobotFramework_Project/actions/workflows/robocop.yml)
+
 Goal: Project to show different ways to develop and execute RobotFramework Tests
 
 
