@@ -6,11 +6,11 @@ Library    dotenv
 
 
 *** Variables ***
-${PROJECT_DIR}        ${CURDIR}/../..
+${PROJECT_DIR}                  ${CURDIR}/../..
 
 ${BROWSER}                      chrome
-${HEROKU_HOMEPAGE}                         https://the-internet.herokuapp.com/
-${HEROKU_TABLES_PAGE}                      https://the-internet.herokuapp.com/tables
+${HEROKU_HOMEPAGE}              https://the-internet.herokuapp.com/
+${HEROKU_TABLES_PAGE}           https://the-internet.herokuapp.com/tables
 
 ${API_HOST}                     https://reqres.in/
 ${REGISTRATION_ENDPOINT}        api/register
