@@ -3,7 +3,7 @@ Documentation     Base page
 
 Library             Collections
 Library             SeleniumLibrary
-Resource            resources/config/config.resource
+Resource            ../config/config.resource
 
 
 *** Keywords ***
@@ -15,4 +15,5 @@ Open Browser Webpage
     Maximize Browser Window
 
 Default Teardown
+    [Documentation]  keyword to close all browsers
     Close All Browsers
