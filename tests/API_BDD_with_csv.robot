@@ -8,10 +8,10 @@ Suite Setup     Load Environment Variables
 
 
 *** Test Cases ***
+# robocop: off=too-few-calls-in-test-case
 Scenario: Successful Registration With ${email}
     [Documentation]    Tests successful registration with different email addresses from a CSV file.
     [Template]         Scenario Outline: Successful Registration
-    Log     Test Executed from csv
 
 
 *** Keywords ***
